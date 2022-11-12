@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 09:44:54 by eleleux           #+#    #+#             */
-/*   Updated: 2022/11/10 15:29:11 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/11 11:14:26 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/11 12:02:17 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	t_list	*recipe;
+	t_list	*temp;
 
-	recipe = malloc(sizeof(t_list));
-	if (!recipe)
-		return (NULL);
-	recipe->content = content;
-	recipe->next = NULL;
-	return (recipe);
+	if (!new)
+		return;
+	if (!alst)
+	{
+		*alst = new;
+		return;
+	}
+	temp = *alst;
+	while (temp->next != NULL)
+		temp = temp->next;
+	temp->next = new;
 }

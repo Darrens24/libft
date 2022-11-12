@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 09:44:54 by eleleux           #+#    #+#             */
-/*   Updated: 2022/11/10 15:29:11 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/10 15:57:33 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/10 16:14:12 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+int		ft_lstsize(t_list *lst)
 {
-	t_list	*recipe;
+	int	i;
 
-	recipe = malloc(sizeof(t_list));
-	if (!recipe)
-		return (NULL);
-	recipe->content = content;
-	recipe->next = NULL;
-	return (recipe);
+	i = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

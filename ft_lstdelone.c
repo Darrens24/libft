@@ -1,25 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 09:44:54 by eleleux           #+#    #+#             */
-/*   Updated: 2022/11/10 15:29:11 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/11 12:04:08 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/11 12:04:32 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	t_list	*recipe;
-
-	recipe = malloc(sizeof(t_list));
-	if (!recipe)
-		return (NULL);
-	recipe->content = content;
-	recipe->next = NULL;
-	return (recipe);
 }
