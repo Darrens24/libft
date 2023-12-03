@@ -1,9 +1,9 @@
 # Libft
 # Libft Project
 
-![GitHub](https://img.shields.io/github/license/votre_nom/libft)
+![GitHub](https://img.shields.io/github/license/Darrens24/libft)
 ![GitHub last commit](https://img.shields.io/github/last-commit/votre_nom/libft)
-![GitHub repo size](https://img.shields.io/github/repo-size/votre_nom/libft)
+![GitHub repo size](https://img.shields.io/github/repo-size/Darrens24/libft)
 
 Ce projet a été réalisé dans le cadre de mon parcours en informatique à l'école 42. Il s'agit d'une bibliothèque standard en langage C que j'ai développée pour consolider mes compétences en programmation et en manipulation de données.
 
@@ -25,21 +25,21 @@ Pour utiliser cette bibliothèque dans vos propres projets, suivez ces étapes :
 
 1. Clonez ce dépôt sur votre machine :
 
-git clone https://github.com/votre_nom/libft.git
+  - git clone https://github.com/votre_nom/libft.git
 
 2. Compilez la librairie
 
-make
-make bonus
+  - make
+  - make bonus
 
 4. Incluez la bibliothèque dans votre code :
 
 ```c
-#include "libft.h"
+  #include "libft.h"
 ```
 5. Compilez votre projet avec les fichiers de la bibliothèque :
 
-gcc -o mon_programme mon_programme.c -L. -lft
+  - gcc -o mon_programme mon_programme.c -L. -lft
 
 Exécutez votre programme.
 
