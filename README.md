@@ -12,13 +12,12 @@ Libft is my first coding project at 42 School. This project aims to recreate var
 
 ## Key Features
 - Implementation of standard libc functions
-- 
 
 ## Installation and Usage
 
-git clone https://github.com/Darrens24/Libft.git
-make
-make bonus
+- git clone https://github.com/Darrens24/Libft.git
+- make
+- make bonus
 
 In your .c file :
 ```c
