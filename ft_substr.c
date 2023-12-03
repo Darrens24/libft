@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 21:27:13 by eleleux           #+#    #+#             */
-/*   Updated: 2022/10/27 10:57:55 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/09 16:58:56 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/12 17:08:41 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned int	i;
-	size_t			j;
 	char			*recipe;
+	unsigned int	i;
 
-	recipe = malloc(sizeof(char) * (len + 1));
+	if (!s)
+		return (NULL);
+	i = ft_strlen((char *)s);
+	if (start >= i)
+		return (ft_strdup(""));
+	i = i - start + 1;
+	if (i > len + 1)
+		i = len + 1;
+	recipe = malloc(sizeof(char) * i);
 	if (!recipe)
 		return (NULL);
-	i = 0;
-	while (i < start && s[i])
-		i++;
-	j = 0;
-	while (j < len)
-		recipe[j++] = s[i++];
-	recipe[j] = '\0';
+	ft_strlcpy(recipe, (char *)s + start, i);
 	return (recipe);
 }

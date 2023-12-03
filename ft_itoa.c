@@ -3,36 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 09:47:45 by eleleux           #+#    #+#             */
-/*   Updated: 2022/10/27 10:48:30 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/12 17:12:09 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/13 20:35:06 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_size(int n)
+static int	get_size(long n)
 {
-	int	size;
+	int		size;
 
 	size = 0;
-	while (n != 0)
+	if (n < 0)
+		n *= -1;
+	while (n >= 10)
 	{
 		n /= 10;
 		size++;
 	}
-	return (size);
+	return (size + 1);
 }
 
-static char	*itoa_is_neg(int n)
+static char	*itoa_is_neg(long n)
 {
 	char	*recipe;
 	int		size;
 
 	size = get_size(n);
 	n *= (-1);
-	recipe = malloc(sizeof(char) * (size + 2));
+	recipe = malloc(sizeof(char) * size + 2);
 	if (!recipe)
 		return (NULL);
 	recipe[size + 1] = '\0';
@@ -45,13 +47,13 @@ static char	*itoa_is_neg(int n)
 	return (recipe);
 }
 
-static char	*itoa_is_pos(int n)
+static char	*itoa_is_pos(long n)
 {
 	char	*recipe;
 	int		size;
 
 	size = get_size(n);
-	recipe = malloc(sizeof(char) * (size + 1));
+	recipe = malloc(sizeof(char) * size + 1);
 	if (!recipe)
 		return (NULL);
 	recipe[size] = '\0';
@@ -66,14 +68,12 @@ static char	*itoa_is_pos(int n)
 char	*ft_itoa(int n)
 {
 	char	*recipe;
+	long	nb;
 
-	if (n == 0)
-		return ("0");
-	else if (n == -2147483648)
-		return ("-2147483648");
-	else if (n < 0)
-		recipe = itoa_is_neg(n);
+	nb = n;
+	if (nb < 0)
+		recipe = itoa_is_neg(nb);
 	else
-		recipe = itoa_is_pos(n);
+		recipe = itoa_is_pos(nb);
 	return (recipe);
 }

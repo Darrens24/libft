@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 16:31:40 by eleleux           #+#    #+#             */
-/*   Updated: 2022/10/27 10:49:19 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/14 17:44:06 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/14 17:47:21 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (ap)
+	if (!lst || !f)
+		return ;
+	while (lst)
 	{
-		free(*ap);
-		*ap = NULL;
+		f(lst->content);
+		lst = lst->next;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 16:44:08 by eleleux           #+#    #+#             */
-/*   Updated: 2022/10/27 10:49:26 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/08 11:45:37 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/09 15:51:42 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,27 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t size)
 {
+	unsigned char		*dest2;
+	const unsigned char	*src2;
 	size_t				i;
-	unsigned char		*destin;
-	const unsigned char	*source;
 
+	dest2 = (unsigned char *)dest;
+	src2 = (const unsigned char *)src;
+	if (!dest && !src)
+		return (NULL);
 	i = 0;
-	destin = dest;
-	source = src;
-	if (destin < source)
+	if (dest < src)
 	{
 		while (i < size)
 		{
-			destin[i] = source[i];
+			dest2[i] = src2[i];
 			i++;
 		}
 	}
-	else if (destin > source)
+	else
 	{
-		i = size;
-		while (i > 0)
-		{
-			destin[i - 1] = source[i - 1];
-			i--;
-		}
+		while (size--)
+			dest2[size] = src2[size];
 	}
 	return (dest);
 }

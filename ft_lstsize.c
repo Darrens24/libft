@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 15:57:33 by eleleux           #+#    #+#             */
-/*   Updated: 2022/11/10 16:14:12 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/14 15:50:43 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/14 17:02:08 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
 	int	i;
 
+	if (!lst)
+		return (0);
 	i = 0;
 	while (lst != NULL)
 	{

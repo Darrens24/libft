@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 10:59:20 by eleleux           #+#    #+#             */
-/*   Updated: 2022/10/27 10:48:24 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/07 14:36:30 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/07 14:41:44 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 
 int	ft_isprint(int c)
 {
-	if (c >= 0 && c <= 255)
-	{
-		if (c >= 32 && c <= 127)
-			return (1);
-		return (0);
-	}
-	return (EOF);
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
 }

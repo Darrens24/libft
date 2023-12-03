@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 19:09:44 by eleleux           #+#    #+#             */
-/*   Updated: 2022/10/27 10:57:19 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/13 16:48:48 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/13 20:43:53 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 	unsigned int	j;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	while (s[i])
 		i++;

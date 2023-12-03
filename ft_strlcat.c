@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 10:08:23 by eleleux           #+#    #+#             */
-/*   Updated: 2022/10/27 10:56:56 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/07 15:45:40 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/09 15:04:31 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,20 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	size_t	k;
 	size_t	l;
 
-	i = 0;
-	j = 0;
+	if ((!src || !dest) && size == 0)
+		return (0);
+	i = ft_strlen(dest);
+	j = ft_strlen(src);
+	if (j == 0)
+		return (i);
+	else if (size <= i)
+		return (j + size);
 	k = 0;
-	while (dest[i])
-		i++;
-	l = i;
-	while (src[k])
+	while (dest[k] != '\0')
 		k++;
-	while (i < size - 1 && size != 0)
-		dest[i++] = src[j++];
-	dest[i] = '\0';
-	if (size < l)
-		return (k + size);
-	return (k + l);
+	l = 0;
+	while (k < size - 1 && src[l])
+		dest[k++] = src[l++];
+	dest[k] = '\0';
+	return (i + j);
 }

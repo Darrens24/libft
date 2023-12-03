@@ -3,89 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 10:36:26 by eleleux           #+#    #+#             */
-/*   Updated: 2022/10/27 10:50:43 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/12 17:11:33 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/14 12:37:44 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_sep(char w, char c)
+static int	splitcount(const char *str, char c)
 {
-	if (w == c)
-		return (1);
-	return (0);
-}
-
-static int	count_splits(char const *s, char c)
-{
-	int	count;
 	int	i;
+	int	len;
+	int	start;
 
-	count = 1;
 	i = 0;
-	while (is_sep(s[i], c))
-		i++;
-	while (s[i])
+	len = 0;
+	while (str[i])
 	{
-		if (is_sep(s[i], c) && !is_sep(s[i + 1], c))
-			count++;
-		i++;
+		while (str[i] && str[i] == c)
+			i++;
+		start = i;
+		while (str[i] && str[i] != c)
+			i++;
+		if (i != start)
+			len++;
 	}
-	i -= 1;
-	if (is_sep(s[i], c))
-		count--;
-	return (count);
+	return (len);
 }
 
-static int	elem_size(char const *s, char c, int start)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] && !is_sep(s[start++], c))
-		i++;
-	return (i);
-}
-
-static char	*duplicate(char const *s, char c, int start)
+static char	*duplicate(char *src, int start, int end)
 {
 	int		i;
 	char	*dest;
 
 	i = 0;
-	dest = malloc(sizeof(char) * (elem_size(s, c, start) + 1));
+	dest = malloc(sizeof(char) * (end - start) + 1);
 	if (!dest)
 		return (NULL);
-	while (s[start] && !is_sep(s[start], c))
-		dest[i++] = s[start++];
+	while (start < end)
+	{
+		dest[i] = src[start];
+		start++;
+		i++;
+	}
 	dest[i] = '\0';
 	return (dest);
+}
+
+static void	freetab(char **recipe, int i)
+{
+	while (i-- > 0)
+		free(recipe[i]);
+	free(recipe);
+}
+
+char	**splitter(char const *s, char c, char **recipe)
+{
+	size_t	i;
+	size_t	j;
+	size_t	start;
+
+	i = 0;
+	j = -1;
+	while (s[i])
+	{
+		while (s[i] == c)
+			i++;
+		start = i;
+		while (s[i] != c && s[i])
+			i++;
+		if (i != start && (s[i] == c || s[i] == '\0'))
+		{
+			recipe[++j] = duplicate((char *)s, start, i);
+			if (!recipe[j])
+			{
+				freetab(recipe, j);
+				return (NULL);
+			}
+		}
+	}
+	recipe[splitcount(s, c)] = 0;
+	return (recipe);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**recipe;
-	int		i;
-	int		start;
-	int		end;
 
-	recipe = malloc(sizeof(char *) * (count_splits(s, c) + 1));
+	if (!s)
+		return (NULL);
+	recipe = malloc(sizeof(char *) * (splitcount(s, c) + 1));
 	if (!recipe)
 		return (NULL);
-	start = 0;
-	i = 0;
-	while (i < count_splits(s, c))
-	{
-		while (s[start] && is_sep(s[start], c))
-			start++;
-		recipe[i] = duplicate(s, c, start);
-		end = elem_size(s, c, start);
-		start += end;
-		i++;
-	}
-	recipe[i] = NULL;
+	recipe = splitter(s, c, recipe);
 	return (recipe);
 }

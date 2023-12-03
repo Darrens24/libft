@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 09:52:34 by eleleux           #+#    #+#             */
-/*   Updated: 2022/10/27 10:57:47 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/12 17:10:20 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/12 18:46:46 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_set(char c, char const *set)
+static int	is_set(char c, char const *set)
 {
 	int	i;
 
@@ -26,27 +26,50 @@ int	is_set(char c, char const *set)
 	return (0);
 }
 
+int	count_set(char const *s1, char const *set)
+{
+	int		i;
+	size_t	count;
+
+	i = 0;
+	count = 0;
+	while (is_set(s1[i], set) && s1[i])
+	{
+		count++;
+		i++;
+	}
+	if (count == ft_strlen(s1))
+		return (count);
+	while (s1[i])
+		i++;
+	i -= 1;
+	while (is_set(s1[i--], set))
+		count++;
+	return (count);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*recipe;
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
-	i = 0;
-	while (s1[i])
-		i++;
-	recipe = malloc(sizeof(char) * (i + 1));
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return ((char *)s1);
+	i = ft_strlen(s1) + 1;
+	k = count_set(s1, set);
+	recipe = malloc((sizeof(char) * i - k));
 	if (!recipe)
 		return (NULL);
 	i = 0;
 	while (is_set(s1[i], set))
 		i++;
 	j = 0;
-	while (s1[i])
+	while (j < (ft_strlen(s1) - k) && s1[i])
 		recipe[j++] = s1[i++];
-	j -= 1;
-	i -= 1;
-	while (is_set(s1[i--], set))
-		recipe[j--] = '\0';
+	recipe[j] = '\0';
 	return (recipe);
 }

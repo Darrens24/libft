@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 09:39:46 by eleleux           #+#    #+#             */
-/*   Updated: 2022/10/27 10:56:50 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/12 15:28:53 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/12 16:05:03 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	i = 0;
-	j = 0;
-	while (s1[i])
-		i++;
-	while (s2[j])
-		j++;
-	recipe = malloc(sizeof(char) * (i + j) + 1);
+	if (!s1 || !s2)
+		return (NULL);
+	recipe = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
 	if (!recipe)
 		return (NULL);
 	i = 0;

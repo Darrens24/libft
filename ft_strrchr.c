@@ -3,30 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/01 09:10:58 by eleleux           #+#    #+#             */
-/*   Updated: 2022/10/27 10:57:41 by eleleux          ###   ########.fr       */
+/*   Created: 2022/11/08 15:41:26 by eleleux           #+#    #+#             */
+/*   Updated: 2022/11/09 16:20:02 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int charset)
+char	*ft_strrchr(const char *str, int searched)
 {
-	int		i;
-	char	*string;
+	int	i;
 
-	i = 0;
-	string = (char *)str;
-	while (string[i])
-		i++;
-	i -= 1;
-	while (i >= 0)
-	{
-		if (string[i] == charset)
-			return (string + i);
+	i = ft_strlen(str);
+	while (str[i] != (char)searched && i > 0)
 		i--;
-	}
+	if (str[i] == (char)searched)
+		return ((char *)(str + i));
 	return (NULL);
 }
