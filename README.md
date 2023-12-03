@@ -1,4 +1,6 @@
 # Libft Project at 42 School
+![Badge Name](libftm.png)
+
 
 ## Overview
 Libft is my first coding project at 42 School. This project aims to recreate various standard C library functions as well as additional utility functions that I found useful during my curriculum at 42. 
