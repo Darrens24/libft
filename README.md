@@ -12,6 +12,7 @@ Ce projet a été réalisé dans le cadre de mon parcours en informatique à l'�
 La bibliothèque Libft contient un ensemble de fonctions qui couvrent divers domaines, notamment :
 
 - Manipulation de chaînes de caractères
+- Manipulation de listes chainees
 - Gestion de mémoire
 - Opérations sur les tableaux
 - Fonctions de conversion
@@ -23,3 +24,24 @@ La bibliothèque Libft contient un ensemble de fonctions qui couvrent divers dom
 Pour utiliser cette bibliothèque dans vos propres projets, suivez ces étapes :
 
 1. Clonez ce dépôt sur votre machine :
+
+git clone https://github.com/votre_nom/libft.git
+
+2. Compilez la librairie
+
+make
+make bonus
+
+4. Incluez la bibliothèque dans votre code :
+
+```c
+#include "libft.h"
+```
+5. Compilez votre projet avec les fichiers de la bibliothèque :
+
+gcc -o mon_programme mon_programme.c -L. -lft
+
+Exécutez votre programme.
+
+
+
