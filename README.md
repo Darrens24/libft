@@ -1,47 +1,31 @@
-# Libft
-# Libft Project
+# Libft Project at 42 School
 
-![GitHub](https://img.shields.io/github/license/Darrens24/libft)
-![GitHub last commit](https://img.shields.io/github/last-commit/votre_nom/libft)
-![GitHub repo size](https://img.shields.io/github/repo-size/Darrens24/libft)
+## Overview
+Libft is my first coding project at 42 School. This project aims to recreate various standard C library functions as well as additional utility functions that I found useful during my curriculum at 42. 
 
-Ce projet a été réalisé dans le cadre de mon parcours en informatique à l'école 42. Il s'agit d'une bibliothèque standard en langage C que j'ai développée pour consolider mes compétences en programmation et en manipulation de données.
+## Skills Developed
+- C programming
+- Deep understanding of memory allocation and management
+- Linked List Manipulation
+- Implementation of basic data structures and algorithms
+- Code optimization for efficiency and readability
 
-## Contenu
+## Key Features
+- Implementation of standard libc functions
+- 
 
-La bibliothèque Libft contient un ensemble de fonctions qui couvrent divers domaines, notamment :
-
-- Manipulation de chaînes de caractères
-- Manipulation de listes chainees
-- Gestion de mémoire
-- Opérations sur les tableaux
-- Fonctions de conversion
-- Fonctions mathématiques simples
-- Et bien d'autres fonctions utiles
-
-## Comment utiliser
-
-Pour utiliser cette bibliothèque dans vos propres projets, suivez ces étapes :
-
-1. Clonez ce dépôt sur votre machine :
-
-  - git clone https://github.com/votre_nom/libft.git
-
-2. Compilez la librairie
-
-  - make
-  - make bonus
-
-4. Incluez la bibliothèque dans votre code :
-
-```c
-  #include "libft.h"
+## Installation and Usage
+```bash
+git clone https://github.com/Darrens24/Libft.git
+cd libft
+make
+make bonus
 ```
-5. Compilez votre projet avec les fichiers de la bibliothèque :
-
-  - gcc -o mon_programme mon_programme.c -L. -lft
-
-Exécutez votre programme.
-
-
-
+In your .c file :
+```c
+#include libft.h
+```
+Then compile, linking the library with your project :
+```bash
+gcc -o your_project your_source_file.c -L./ -lft
+```
