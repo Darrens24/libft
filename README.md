@@ -15,12 +15,11 @@ Libft is my first coding project at 42 School. This project aims to recreate var
 - 
 
 ## Installation and Usage
-```bash
+
 git clone https://github.com/Darrens24/Libft.git
-cd libft
 make
 make bonus
-```
+
 In your .c file :
 ```c
 #include libft.h
